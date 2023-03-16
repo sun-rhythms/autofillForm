@@ -10,7 +10,7 @@ class autofillForm extends HTMLElement {
   closeOptionsOnBlur = (e) => {
     if (
       this.jsonDatalist.style.display === 'block' &&
-      e.target.nodeName !== 'OPTION'
+      e.target.nodeName !== 'LI'
     ) {
       this.jsonDatalist.style.display = 'none';
     }
@@ -88,6 +88,7 @@ class autofillForm extends HTMLElement {
         if (suggestionsData) {
           suggestionsData.forEach((company) => {
             const companyLi = document.createElement('li');
+            console.log(companyLi.nodeName);
             companyLi.textContent = company.value;
             this.jsonDatalist.append(companyLi);
           });
