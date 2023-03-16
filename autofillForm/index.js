@@ -59,11 +59,11 @@ class autofillForm extends HTMLElement {
       });
   };
 
-  fillInformationByOptionClick = (suggestionsData, option) => {
+  fillInformationByOptionClick = (suggestionsData, companyLi) => {
     const companyData = suggestionsData.find(
-      (company) => company.value === option.value
+      (company) => company.value === companyLi.textContent
     ).data;
-    this.party.value = option.value;
+    this.party.value = companyLi.textContent;
     this.isDatalistVisible(false);
     this.nameShortField.value = companyData.name.short_with_opf || '';
     this.nameFullField.textContent = companyData.name.full_with_opf || '';
@@ -87,20 +87,19 @@ class autofillForm extends HTMLElement {
       .then((suggestionsData) => {
         if (suggestionsData) {
           suggestionsData.forEach((company) => {
-            const option = document.createElement('option');
-            option.value = company.value;
-            option.textContent = company.value;
-            this.jsonDatalist.appendChild(option);
+            const companyLi = document.createElement('li');
+            companyLi.textContent = company.value;
+            this.jsonDatalist.append(companyLi);
           });
 
-          if (!this.jsonDatalist.options.length) {
+          if (!this.jsonDatalist.childNodes.length) {
             this.isDatalistVisible(false);
           }
-          if (this.jsonDatalist.options.length) {
+          if (this.jsonDatalist.childNodes.length) {
             this.isDatalistVisible(true);
-            for (let option of this.jsonDatalist.options) {
-              option.onclick = () =>
-                this.fillInformationByOptionClick(suggestionsData, option);
+            for (let companyLi of this.jsonDatalist.childNodes) {
+              companyLi.onclick = () =>
+                this.fillInformationByOptionClick(suggestionsData, companyLi);
             }
           }
         }
@@ -152,8 +151,8 @@ class autofillForm extends HTMLElement {
       <div class="container" id="container">
         <input autocomplete="false" role="combobox" list="" id="party" name="json-datalist" class="input" type="text"
           placeholder="Введите название или ИНН организации" />
-        <datalist id="json-datalist" role="listbox" class="datalist">
-        </datalist>
+        <ul id="json-datalist" class="datalist">
+        </ul>
       </div>
     </section>
     <section>
