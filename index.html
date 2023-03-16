@@ -6,11 +6,26 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script defer src="index.js" type="module">  </script>
-  <title>Document</title>
+  <title>Autofill Form</title>
 </head>
 
 <body>
   <autofill-form token="9ce5e9da5d65789a7f83e083e5a38e96030b4a9f"></autofill-form>
+
+  <script>
+    (function () {
+      var inputs = document.getElementsByTagName('input');
+      for (var i = 0; i < inputs.length; i++) {
+        var input = inputs[i];
+        input.onchange = function (evt) {
+          var elem = evt ? evt.target : window.event.srcElement;
+          alert('new value: ' + elem.value);
+        };
+      }
+    }());
+  </script>
+
+  <script src="datalist.polyfill.min.js"></script>
 </body>
 
 </html>
