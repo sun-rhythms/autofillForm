@@ -88,7 +88,6 @@ class autofillForm extends HTMLElement {
         if (suggestionsData) {
           suggestionsData.forEach((company) => {
             const companyLi = document.createElement('li');
-            console.log(companyLi.nodeName);
             companyLi.textContent = company.value;
             this.jsonDatalist.append(companyLi);
           });
