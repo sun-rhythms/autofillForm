@@ -109,7 +109,7 @@ class autofillForm extends HTMLElement {
       });
   };
 
-  debouncedShowOptions = this.debounce(this.showOptions, 800);
+  debouncedShowOptions = this.debounce(this.showOptions, 300);
 
   isDatalistVisible = (boolean) =>
     (this.jsonDatalist.style.display = boolean ? 'block' : 'none');
