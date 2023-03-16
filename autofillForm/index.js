@@ -166,7 +166,7 @@ class autofillForm extends HTMLElement {
       </div>
       <div class="row">
         <label class="title">ИНН / КПП</label>
-        <input id="inn_kpp" class="textarea">
+        <input id="inn_kpp" class="input">
       </div>
       <div class="row">
         <label class="title">Адрес</label>

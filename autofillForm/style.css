@@ -27,14 +27,6 @@
   min-height: 30px;
   resize: none;
 }
-.textarea {
-  font-family: inherit;
-  box-sizing: border-box;
-  font-size: 16px;
-  padding: 4px;
-  width: 100%;
-  resize: none;
-}
 
 .datalist {
   position: absolute;
@@ -46,13 +38,17 @@
   width: 100%;
   max-height: 10rem;
   overflow-y: auto;
+  margin: 0;
+  list-style: none;
+  padding: 0;
+  display: none;
 }
 
 .container {
   position: relative;
 }
 
-option {
+li {
   background-color: white;
   padding: 4px;
   color: black;
@@ -62,14 +58,14 @@ option {
   font-weight: 600;
 }
 
-option:hover {
+li:hover {
   background-color: rgb(226, 222, 222);
 }
 
 @media screen and (max-width: 400px) {
   .input,
   .castomTextarea,
-  option {
+  li {
     font-size: 14px;
   }
 }
